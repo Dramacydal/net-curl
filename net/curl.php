@@ -35,8 +35,8 @@ class curl
         CURLOPT_TIMEOUT             => 90,
         CURLOPT_CUSTOMREQUEST       => 'GET',
         CURLOPT_HTTP_VERSION        => CURL_HTTP_VERSION_1_0,
-        CURLOPT_COOKIEJAR           => '/tmp/global_cookie.mpcmf',
-        CURLOPT_COOKIEFILE          => '/tmp/global_cookie.mpcmf',
+        CURLOPT_COOKIEJAR           => '/tmp/global.cookie',
+        CURLOPT_COOKIEFILE          => '/tmp/global.cookie',
     ];
 
     /**
