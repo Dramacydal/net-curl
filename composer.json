@@ -17,6 +17,8 @@
         }
     ],
     "autoload": {
-        "psr-4": { "": "src/" }
+        "psr-4": {
+            "mpcmf\\system\\": "src/"
+        }
     }
 }
