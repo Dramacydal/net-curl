@@ -15,5 +15,8 @@
             "name": "Dmitry Emelyanov",
             "email": "gilberg.vrn@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": { "": "src/" }
+    }
 }
