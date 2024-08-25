@@ -158,22 +158,22 @@ class curl
             $method = 'GET';
         }
         $url = trim($url);
-        if (is_array($params)) {
-            $params = http_build_query($params);
-        }
         switch(strtoupper($method)) {
             case 'GET':
                 $this->options[CURLOPT_CUSTOMREQUEST] = 'GET';
+                if(is_array($params)) {
+                    $params = http_build_query($params);
+                }
                 if($params !== null) {
                     $url .= strpos($url, '?') === false ? "?$params" : "&$params";
                 }
                 break;
             case 'POST':
                 $this->options[CURLOPT_CUSTOMREQUEST] = 'POST';
-                if($params !== null) {
+                curl_setopt($this->curl, CURLOPT_POST, 1);
+                if(is_array($params) || is_string($params)) {
                     curl_setopt($this->curl, CURLOPT_POSTFIELDS, $params);
                 }
-                curl_setopt($this->curl, CURLOPT_POST, 1);
                 break;
             default:
                 $this->options[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
@@ -237,6 +237,11 @@ class curl
         }
 
         return $result;
+    }
+
+    public function getCode()
+    {
+        return curl_getinfo($this->curl, CURLINFO_HTTP_CODE);
     }
 
     public function getCharsetFromHeader()
